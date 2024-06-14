@@ -2,13 +2,14 @@ name: Laravel
 
 on:
   push:
-    branches: ["master"]
+    branches: [ "master" ]
   pull_request:
-    branches: ["master"]
+    branches: [ "master" ]
 
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -50,22 +51,3 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: php artisan test
-
-    - name: Notify on Failure
-      if: failure()
-      runs-on: ubuntu-latest
-      steps:
-        - name: Install Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: '14'
-
-        - name: Set up SendGrid
-          run: npm install @sendgrid/mail
-
-        - name: Send failure notification
-          run: node send-email.js
-          env:
-            SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-            RECIPIENTS: chhit085@gmail.com,tongmeng016@gmail.com
-            SENDER: nooberchhit@gmail.com
