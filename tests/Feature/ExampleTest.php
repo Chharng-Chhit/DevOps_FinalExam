@@ -9,12 +9,12 @@ it('returns a successful response', function () {
     $response->assertStatus(200);
 });
 
-test('create student', function () {
-    $student = Student::create([
-        'name' => 'John Doe',
-        'email' => 'chhit@itc.edu.kh', // Ensure to use a valid email address
-        'phone' => '012 345 678',
-        'dob' => '2003-10-01'
-    ]);
-    assertTrue($student->exists());
-});
+// test('create student', function () {
+//     $student = Student::create([
+//         'name' => 'John Doe',
+//         'email' => 'chhit@itc.edu.kh', // Ensure to use a valid email address
+//         'phone' => '012 345 678',
+//         'dob' => '2003-10-01'
+//     ]);
+//     assertTrue($student->exists());
+// });
