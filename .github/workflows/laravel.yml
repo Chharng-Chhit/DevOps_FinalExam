@@ -9,6 +9,7 @@ on:
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -50,31 +51,3 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: php artisan test
-
-    - name: Notify on Failure
-      if: failure()
-      runs-on: ubuntu-latest
-      steps:
-        - name: Send failure notification
-          uses: actions/github-script@v6
-          with:
-            script: |
-              const sgMail = require('@sendgrid/mail');
-              sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-              const msg = {
-                to: [
-                  { email: 'chhit085@gmail.com' },
-                  { email: 'tongmeng016@gmail.com' },
-                ], // Add more recipients as needed
-                from: 'nooberchhit@gmail.com', // Change to your verified sender
-                subject: 'GitHub Actions Workflow Failed',
-                text: `The workflow for branch ${context.payload.ref} has failed.`,
-                html: `<strong>The workflow for branch ${context.payload.ref} has failed.</strong>`,
-              };
-              sgMail.send(msg).then(() => {
-                console.log('Email sent');
-              }).catch((error) => {
-                console.error(error);
-              });
-      env:
-        SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
