@@ -68,7 +68,7 @@ jobs:
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_PASSWORD }}
           subject: 'Build Failed: ${{ github.repository }}'
-          to: 'e20201056@itc.edu.kh, tongsreng@itc.edu.kh'
+          to: 'chhit085@gmail.com, tongsreng@itc.edu.kh'
           from: ${{ secrets.GMAIL_USERNAME }}
           body: |
             The build for the repository ${{ github.repository }} has failed.
