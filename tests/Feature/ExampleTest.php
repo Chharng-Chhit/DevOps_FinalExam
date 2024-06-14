@@ -12,7 +12,7 @@ it('returns a successful response', function () {
 test('create student', function () {
     $student = Student::create([
         'name' => 'John Doe',
-        'email' => 'john.doe@itc.edu.kh', // Ensure to use a valid email address
+        'email' => 'chhit@itc.edu.kh', // Ensure to use a valid email address
         'phone' => '012 345 678',
         'dob' => '2003-10-01'
     ]);
