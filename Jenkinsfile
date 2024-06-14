@@ -11,8 +11,9 @@ pipeline {
             steps {
                 echo 'Compiling code...'
                 sh 'cp .env.example .env'
+                sh 'compose update'
                 sh 'composer install && php artisan key:generate && npm install && npm run build'
-                sh 'php artisan migrate:fresh'
+                // sh 'php artisan migrate:fresh'
             }
         }
         stage('Test the app') {
