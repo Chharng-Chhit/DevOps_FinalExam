@@ -12,6 +12,7 @@ pipeline {
                 echo 'Compiling code...'
                 sh 'cp .env.example .env'
                 sh 'composer install && php artisan key:generate && npm install && npm run build'
+                sh 'php artisan migrate'
             }
         }
         stage('Test the app') {

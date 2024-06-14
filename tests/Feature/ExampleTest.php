@@ -16,6 +16,5 @@ test('create student', function () {
         'phone' => '012 345 678',
         'dob' => '2003-10-01'
     ]);
-
     assertTrue($student->exists());
 });
